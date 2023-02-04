@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Objects;
 import java.util.Random;
 
 public class BlockSnake {
@@ -84,6 +85,25 @@ public class BlockSnake {
 		int y = r.nextInt(val);
 		
 		return new BlockSnake(x,y, TypeBlock.FOOD, taille);
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(posX, posY);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BlockSnake other = (BlockSnake) obj;
+		return posX == other.posX && posY == other.posY;
 	}
 	
 	
